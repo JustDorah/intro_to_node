@@ -1,10 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 
-const source = fs.readFileSync("./project-outline.txt");
+const source = process.argv[2];
+//const source = fs.readFileSync("./project-outline.txt");
 console.log("source: ", source);
 
-const target = fs.readdirSync("./my-project");
+const target = process.argv[3];
+//const target = fs.readdirSync("./my-project");
 console.log("target: ", target);
 
 // read contents of source
@@ -31,7 +33,7 @@ linesInSource.forEach(line => {
   console.log("newFilePath: ", newFilePath);
 
   // write the file and it's contents
-  fs.writeFileSync(newFilePath, contentArr, {
+  fs.writeFileSync(newFilePath, contentArr.join(' '), {
     flag: "w+",
     encoding: "utf-8"
   });
