@@ -1,9 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const source = process.argv[2];
+const source = fs.readFileSync("./project-outline.txt");
 console.log("source: ", source);
-const target = process.argv[3];
+
+const target = fs.readdirSync("./my-project");
 console.log("target: ", target);
 
 // read contents of source
@@ -25,6 +26,7 @@ linesInSource.forEach(line => {
   // construct the full path for the file to create
   const newFilePath = path.join(__dirname, target, filename);
   console.log("__dirname: ", __dirname);
+
   //https://nodejs.org/api/modules.html#modules_dirname
   console.log("newFilePath: ", newFilePath);
 
